@@ -26,8 +26,8 @@
     >
       <v-toolbar-title>ToDoSQL</v-toolbar-title>
     </v-app-bar>
-      <v-content>
-      <v-container fluid >
+      <v-content">
+      <v-container fluid  >
         <v-row justify="center">
           <v-col lg="6">
             <v-card>
@@ -63,7 +63,9 @@
 
                       <v-list-item-content>
                         <v-list-item-title :class="{done: todo.done}">{{todo.title | capitalize}}</v-list-item-title>
-                        <v-list-item-subtitle>Added to: {{todo.date | date}}</v-list-item-subtitle>
+                        <v-list-item-subtitle>Add: {{todo.createdAt | date(true)}}
+                          (Update: {{todo.updatedAt | date(true)}})
+                        </v-list-item-subtitle>
                       </v-list-item-content>
                       <v-btn fab small color="error" @click="removeTodo(todo.id)"><v-icon>close</v-icon></v-btn>
                     </template>
@@ -79,49 +81,8 @@
 </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-<script>
-  new Vue({
-    el: '#app',
-    vuetify: new Vuetify(),
-    data() {
-      return {
-        show: true,
-        todoTitle: '',
-        todos: []
-      }
-    },
-    methods: {
-      addTodo() {
-        const title = this.todoTitle.trim();
-        if (!title) return;
-        this.todos.push({
-          title: title,
-          id: Math.random(),
-          done: false,
-          date: new Date()
-        });
-        this.todoTitle = '';
-      },
-      removeTodo(id) {
-        this.todos = this.todos.filter((t) => t.id !== id);
-      }
-    },
-    filters: {
-      capitalize(value) {
-        return value.toString().charAt(0).toUpperCase() + value.slice(1);
-      },
-      date(value) {
-        return new Intl.DateTimeFormat('en-En', {
-          year: 'numeric',
-          month: 'long',
-          day: '2-digit'
-        }).format(new Date(value));
-      }
-    },
-    created () {
-      this.$vuetify.theme.dark = true;
-    },
-  });
+<script src="/app.js">
+ 
 </script>
 </body>
 </html>

@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/ramp4/mysql#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.4",
+    "vuetify": "^2.2.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
